@@ -48,7 +48,7 @@ First, I need to understand the project's conventions and existing patterns, lev
 - [ ] Document all research findings with specific file paths (e.g., `app/services/example_service.rb:42`)
 - [ ] Include URLs to external documentation and best practices guides
 - [ ] Create a reference list of similar issues or PRs (e.g., `#123`, `#456`)
-- [ ] Note any team conventions discovered in `CLAUDE.md` or team documentation
+- [ ] Note any team conventions discovered in agent instruction files (e.g., `AGENTS.md`, `CLAUDE.md`, `COPILOT_INSTRUCTIONS.md`) or team documentation
 
 ### 2. Issue Planning & Structure
 
@@ -341,7 +341,7 @@ end \`\`\`
 
 - [ ] Account for accelerated development with AI pair programming
 - [ ] Include prompts or instructions that worked well during research
-- [ ] Note which AI tools were used for initial exploration (Claude, Copilot, etc.)
+- [ ] Note which AI tools were used for initial exploration (tool name, host, and model if known)
 - [ ] Emphasize comprehensive testing given rapid implementation
 - [ ] Document any AI-generated code that needs human review
 
@@ -388,7 +388,7 @@ gh issue create --title "[TITLE]" --body "[CONTENT]" --label "[LABELS]"
 
 **Continuous Improvement:**
 
-- Update CLAUDE.md with any new patterns discovered during research
+- Update the project's active agent guidance file(s) with any new patterns discovered during research
 - Document effective prompts that yielded good results
 - Note any project-specific conventions not yet documented
 - Share learnings from AI-assisted research in team channels

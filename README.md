@@ -1,10 +1,20 @@
-# Claude Commands
+# Agent Commands
 
-Prompt templates for Claude Code to handle common software development tasks.
+Prompt templates for agentic coding tools to handle common software development tasks.
 
 ## Overview
 
-This repository contains prompts that help Claude Code work through software engineering tasks systematically. Each template provides a structured approach for specific development scenarios.
+This repository contains prompts that help coding agents work through software engineering tasks systematically. Each template provides a structured approach for specific development scenarios.
+
+The prompts are written as a provider-neutral core and can be adapted to specific tools.
+
+## Supported Adapters (v1)
+
+- Claude
+- Codex
+- GitHub Copilot
+
+See `docs/portability.md` for the portability contract and `docs/tool-mappings/` for adapter details.
 
 ## Available Commands
 
@@ -18,12 +28,6 @@ A learn-from-failure approach to implementing code changes. Tracks attempts and 
 - Performance optimizations
 - Experimental refactoring
 
-**Structure:**
-- Goal setting with impact focus
-- Code analysis and planning
-- Implementation tracking with success/failure logs
-- Iterative improvement cycles
-
 ### 2. Generate Codebase Context (`02_generate_codebase_context.md`)
 
 Creates comprehensive documentation files (like `llms.txt`) that provide complete context about a codebase.
@@ -33,13 +37,6 @@ Creates comprehensive documentation files (like `llms.txt`) that provide complet
 - Codebase reference materials
 - Pre-refactoring analysis
 - AI assistant context
-
-**Output includes:**
-- File purposes and relationships
-- Function signatures with parameters
-- Architecture diagrams
-- Code conventions
-- Data formats
 
 ### 3. Analyze GitHub Issue (`03_analyze_github_issue.md`)
 
@@ -51,13 +48,6 @@ Analyzes GitHub issues and creates implementation plans before coding begins.
 - Stakeholder alignment
 - Risk evaluation
 
-**Process:**
-1. Review issue details
-2. Examine codebase
-3. Create feature branch
-4. Develop implementation plan
-5. Request approval
-
 ### 4. Create GitHub Issue (`04_create_github_issue.md`)
 
 Creates well-structured GitHub issues with varying detail levels based on complexity.
@@ -67,17 +57,6 @@ Creates well-structured GitHub issues with varying detail levels based on comple
 - Bug reports
 - Architecture proposals
 - Improvement suggestions
-
-**Detail levels:**
-- **MINIMAL**: Simple bugs or clear features
-- **MORE**: Standard issues with technical details
-- **A LOT**: Major features or architectural changes
-
-**Features:**
-- Repository convention research
-- Best practices integration
-- Stakeholder analysis
-- Proper formatting and cross-references
 
 ### 5. Resolve PR Comments (`05_resolve_pr_comments.md`)
 
@@ -89,58 +68,47 @@ Systematically addresses all PR feedback, comments, and requested changes.
 - Pre-merge cleanup
 - Review response management
 
-**Workflow:**
-1. Research - Find all comments and feedback
-2. Planning - Prioritize and track with TodoWrite
-3. Implementation - Address each item
-4. Verification - Test and validate changes
+### 6. Help Me Market (`06_help_me_market.md`)
 
-**Features:**
-- Parallel processing for independent changes
-- Comment priority classification
-- GitHub API command examples
-- Resolution tracking
+Turns product changes into high-signal marketing narratives grounded in code and docs.
 
 ## Usage
 
 Templates can be used as slash commands or copied directly:
 
 ```bash
-# As slash command
+# As a slash command (tool-specific setup required)
 /research Create OAuth authentication feature
 
 # Or copy template content and replace placeholders
 ```
 
-## Template Structure
+## Portability Model
 
-Most templates include:
-- Clear objectives
-- Step-by-step processes
-- Decision criteria
-- Output formats
-- Usage examples
+1. Keep prompt logic provider-neutral in core files.
+2. Use capability language (`search_files`, `run_shell`, `track_tasks`, `delegate_parallel`, `web_research`) instead of provider tool names.
+3. Apply tool-specific behavior via adapter docs in `docs/tool-mappings/`.
 
 ## Best Practices
 
 1. Select templates based on task type and complexity
 2. Provide complete context when using templates
 3. Follow all phases in multi-step workflows
-4. Use TodoWrite for complex task tracking
+4. Use your tool's task tracker/checklist equivalent for complex task tracking
 5. Run tests and linting after changes
 
 ## Contributing
 
 When adding templates:
 - Focus on specific use cases
-- Include clear documentation
-- Provide examples
-- Test thoroughly
+- Keep core prompts provider-neutral
+- Put provider specifics into adapter mappings
+- Include clear documentation and examples
 - Keep formatting consistent
 
-## Customization
+## Tool Mapping Docs
 
-- Adapt templates to match team conventions
-- Save project-specific versions in `.claude/commands/`
-- Combine templates for complex workflows
-- Share modifications with your team
+- Portability contract: `docs/portability.md`
+- Claude adapter: `docs/tool-mappings/claude.md`
+- Codex adapter: `docs/tool-mappings/codex.md`
+- Copilot adapter: `docs/tool-mappings/copilot.md`
