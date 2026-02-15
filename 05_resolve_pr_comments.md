@@ -183,8 +183,8 @@ Agent: Analyzing unresolved comments...
 Found 8 actionable comments across 4 files.
 
 Parallel Resolution Plan:
-- Worker 1: app/models/chat.rb (2 comments)
-- Worker 2: app/tools/search_emails.rb (3 comments)
+- Worker 1: app/models/chat.rs (2 comments)
+- Worker 2: app/tools/search_emails.rs (3 comments)
 - Worker 3: test/ files (2 comments)
 - Worker 4: app/tools/concerns/ (1 comment)
 
