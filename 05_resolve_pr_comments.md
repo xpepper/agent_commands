@@ -38,22 +38,24 @@ Use your tool's task-tracking mechanism (or a markdown checklist) to track progr
 ### Phase 3: Implementation
 
 ```
-Now implement the solutions for each item in the plan:
+Now implement the solutions.
+For each item in the plan:
 - Make the requested code changes
 - Update documentation as needed
 - Prepare responses to questions
 - Ensure all changes maintain code quality and pass tests
-- Mark each task as completed when finished
+- Run linting, formatting, and tests to verify everything works
+- Commit the changes with a clear message
+- Push the changes to the PR branch
+- Mark the task as completed when finished
 ```
 
 ### Phase 4: Resolution & Verification
 
 ```
 After addressing all items:
-1. Run linting and tests to verify everything works
-2. Create a summary of all changes made
-3. Commit the changes with a clear message
-4. Verify all review comments have been addressed
+1. Create a summary of all changes made
+2. Verify all review comments have been addressed
 ```
 
 ## Correct GitHub API Commands for Comment Retrieval
@@ -195,9 +197,9 @@ Spawning parallel workers where supported by this tool...
 
 ### Before Committing Changes
 ```bash
-# 1. Verify all tests pass
-bundle exec standardrb  # or your linter
-bin/rails test          # or your test command
+# 1. Run the the full safeguard suite to ensure all changes are correct, based on the existing agent instructions
+cargo make clippy # or your linter
+cargo make test   # or your test command
 
 # 2. Check that all comments have been addressed
 echo "=== VERIFICATION: Checking comment resolution ==="
